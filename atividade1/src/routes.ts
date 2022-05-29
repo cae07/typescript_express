@@ -8,10 +8,10 @@ const router = Router();
 const NotFoundMessage = "Usuário não encontrado";
 
 router.get("/users", async (
-  req: Request,
+  _req: Request,
   res: Response
 ): Promise<Response<User[]>> => {
-  const users = await read();
+  const users: User[] = await read();
 
   return res.status(StatusCode.OK).json(users);
 })
@@ -22,7 +22,7 @@ router.get("/users/:id", async (
 ): Promise<Response<User | string>> => {
   const { id } = req.params;
 
-  const users = await read();
+  const users: User[] = await read();
   const user = users.find((user) => user.id === id);
 
   if (!user) return res.status(StatusCode.NOT_FOUND).send(NotFoundMessage);
@@ -36,7 +36,7 @@ router.post("/users", validateFields, async (
 ): Promise<Response<User>> => {
   const user: User = req.body;
 
-  const users = await read();
+  const users: User[] = await read();
   users.push(user);
   
   await write(users);
@@ -52,7 +52,7 @@ router.put("/users/:id", validateFields, async (
 
   const userToEdit: User = req.body;
 
-  const users = await read();
+  const users: User[] = await read();
 
   const index = users.findIndex((user) => user.id === id);
 
@@ -71,7 +71,7 @@ router.delete("/user/:id", async (
 ): Promise<Response<string>> => {
   const { id } = req.params;
 
-  const users = await read();
+  const users: User[] = await read();
   const index = users.findIndex((user) => user.id === id);
 
   if (!index) return res.status(StatusCode.NOT_FOUND);
