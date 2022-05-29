@@ -82,3 +82,5 @@ router.delete("/user/:id", async (
 
   return res.status(StatusCode.OK).send(`Usuário com id: ${id} deletado com sucesso`);
 });
+
+export default router;
