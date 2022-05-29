@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import User from "./User";
+import StatusCode from "./enums/StatusCode";
 const Joi = require('./utils/validations');
 
 export const validateFields = async (
@@ -12,7 +13,7 @@ export const validateFields = async (
   
   if (error) {
     const MESSAGE = error.details[0].message;
-    return res.status(404).send(MESSAGE);
+    return res.status(StatusCode.BAD_REQUEST).send(MESSAGE);
   }
 
   next()
