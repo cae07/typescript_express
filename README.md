@@ -1,6 +1,7 @@
 # Praticando Express com TypeScript
 
 Soluções propostas para os exercícios práticos do dia 3 de TypeScript.
+Não usei de muita arquitetura para focar na utilização de TypeScript mesmo.
 
 # Exercícios
 ## Atividade 1:
@@ -23,6 +24,25 @@ Soluções propostas para os exercícios práticos do dia 3 de TypeScript.
 - O nome deve possuir pelo menos 3 caracteres;
 - O _email_ deve possuir um formato de _email_ válido (email@email.com);
 - Ao criar um novo `user`, o _email_ não pode já estar cadastrado.
+
+### Arquitetura da aplicação
+
+```
+├── src
+    ├── enums
+    │    └── StatusCode.ts
+    │
+    ├── utils
+    │   ├── fileManipulation.ts
+    │   └── validations.ts
+    │   
+    ├── index.ts   
+    ├── middlewares.ts
+    ├── routes.ts
+    ├── User.ts
+    └── users.json
+
+``` 
 
 <hr>
 

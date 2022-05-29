@@ -33,10 +33,14 @@ router.get("/users/:id", async (
 router.post("/users", validateFields, async (
   req: Request,
   res: Response,
-): Promise<Response<User>> => {
+): Promise<Response<User | string>> => {
   const user: User = req.body;
 
   const users: User[] = await read();
+  const emailExist: boolean = users.some((u) => u.email === user.email);
+
+  if (emailExist) return res.status(StatusCode.BAD_REQUEST).send("Email já existe.");
+
   users.push(user);
   
   await write(users);
