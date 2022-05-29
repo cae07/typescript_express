@@ -6,6 +6,23 @@ import User from './User';
 
 const router = Router();
 const NotFoundMessage = "Usuário não encontrado";
+const invalidUserMessage = "email e/ou senha inválidos";
+
+router.get("/users/login", async (
+  req: Request,
+  res: Response,
+): Promise<Response<string>> => {
+  const { email, senha } = req.body;
+  if (!email || !senha) return res.status(StatusCode.BAD_REQUEST).send(invalidUserMessage);
+
+  const users: User[] = await read();
+
+  const isUser = users.find((u) => u.email === email && u.senha === senha);
+
+  if (!isUser) return res.status(StatusCode.NOT_FOUND).send(invalidUserMessage);
+
+  return res.send("usuário logado com sucesso.")
+})
 
 router.get("/users", async (
   _req: Request,
