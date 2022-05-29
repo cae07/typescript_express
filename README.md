@@ -1,7 +1,7 @@
 # Praticando Express com TypeScript
 
-Soluções propostas para os exercícios práticos do dia 3 de TypeScript.
-Não usei de muita arquitetura para focar na utilização de TypeScript mesmo.
+<p>Soluções propostas para os exercícios práticos do dia 3 de TypeScript.</p>
+<p>Não usei de muita arquitetura para focar na utilização de TypeScript mesmo.</p>
 
 # Exercícios
 ## Atividade 1:
